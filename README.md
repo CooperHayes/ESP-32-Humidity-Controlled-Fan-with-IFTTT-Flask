@@ -107,8 +107,8 @@ The Flask server is responsible for accepting POST requests containing sensor da
 4. Input personal WiFi name and password
 5. Connect the hardware according to the wiring diagram.
 6. Configure an applet on IFTTT with an "if this" as "Recieve a webhook request" and a "then that" as "Send me an email".
-7. Paste webhook url given by IFTTT into http.begin() when establishing connection between ESP32 and IFTTT webhook
-8. Add the Flask server IPv4 address to http.begin() when establishing connection between ESP32 and Flask server
+7. Paste webhook url given by IFTTT into http.begin() when preparing a connection between ESP32 and IFTTT webhook
+8. Add the Flask server IPv4 address to http.begin() when perparing a connection between ESP32 and Flask server
 9. Upload the sketch to the ESP32 board.
 
  ## Flask Server Setup
