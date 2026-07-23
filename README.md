@@ -1,18 +1,28 @@
-# ESP-32-Humidity-Controlled-Fan-with-IFTTT-Email-Alert-Implementation
-A DHT22 is used to take humidity readings that are then displayed on a .96 OLED display and compared to threshold to turn a 5V fan on or off. By utilizing the ESP-32's ability to connect to WiFi and set web requests to websites, the ESP32 send a webhook request to an IFTTT URL, which then sends an email to a Gmail inbox
+# ESP-32-Humidity-Controlled-Fan-with-IFTTT-Flask
 
 ## Project Overview
 
-This system continuously monitors local humidity using a humidity sensor connected to an ESP32. When the measured humidity rises above the level determined by the potentiometer , the the ESP32 sends a signal to the MOSFET gate which then allows for current to flow through the 5V fan. Once humidity falls below the threshold, the fan is switched off automatically.
+This system continuously monitors local humidity using a humidity sensor connected to an ESP32. When the measured humidity rises above the level determined by the potentiometer , the the ESP32 sends a signal to the MOSFET gate which acts as an electronic switch and allows for current to flow through the 5V fan withoug damaging any GPIO pins on the ESP32. Once humidity falls below the threshold, the fan is switched off automatically.
 
-The goal of the project is to provide a simple, low-cost environmental control that operates without manual intervention and alerts users automatically.
+When the fan is switched on initially, the ESP32 sends a GET request to an IFTTT webhook which reponds by sending a email to a user inbox. Edge-detection is utilized to ensure that only 1 email is sent when the fan is turned on.
+
+The ESP32 communicates a Python Flask server. When 30 seconds have elasped the ESP32 creates a POST request with a JSON body that contains sensor data and sends the request to the Flask server. The Flask server uses the "/log" endpoint to process and store the JSON data in a SQLite database that it connects to via SQLAlchemy.
+
+The stored can be accessed by using the "/data" endpoint in the Flask server which retrieves the sensor data, converts it to JSON data, and adds it to a web dashboard. The "/" endpoint in the Flask server is used to render a HTML page that shows a tabulated form of sensor data.
+
+
+
+
+The goal of the project is to provide a simple, low-cost environmental control that operates without manual intervention, alerts users automatically, and updates a browser with real-time data through backend communication.
 
 ## Features
 
 * Real-time humidity monitoring
 * Automatic fan activation
-* Digital presentation of temperature and humidity
+* Digital presentation of temperature and humidity on OLED display
 * Adjustable humidity thresholds
+* Python Flask backend communication
+* API endpoint for data logging and retrieval
 
 ## Hardware Used
 
