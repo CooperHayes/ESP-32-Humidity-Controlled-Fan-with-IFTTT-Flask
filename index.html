@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Environment Monitor</title>
+</head>
+
+<body>
+
+<h1>ESP32 Environment Monitor</h1>
+
+<table border="1">
+
+<tr>
+    <th>Temperature</th>
+    <th>Humidity</th>
+    <th>Threshold</th>
+    <th>Fan</th>
+    <th>Runtime</th>
+</tr>
+
+{% for r in readings %}
+
+<tr>
+
+<td>{{ r.temperature }}</td>
+
+<td>{{ r.humidity }}</td>
+
+<td>{{ r.threshold }}</td>
+
+<td>{{ r.fan }}</td>
+
+<td>{{ r.runtime }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>
