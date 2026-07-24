@@ -119,7 +119,7 @@ The Flask server is responsible for accepting POST requests containing sensor da
 * Install the required Python dependencies
 * Type "pip install flask flask-sqlalchemy" in Windows powershell or terminal
 * Start the Flask server. by typing "python app.py" in the terminal
-* Record the first IP address displayed in the terminal response and add the address to the ESP32 code as the flaskServer variable
+* Record the second IP address displayed in the terminal response and add the address to the ESP32 code as the flaskServer variable with "/log" added at the end
 * Ensure that the ESP32 and Flask server are connected to the appropriate network
 * Configure the ESP32 to send POST requests to the Flask server's /log endpoint by using the form "FlaskIPAddress/log"
 * Open the Flask server's web interface in a browser to view the recorded data in JSON form by using the "/data" endpoint or in tabulated form by using "/" endpoint
